@@ -12,29 +12,22 @@ public class EjercicioArrays {
         int[] practicas = new int[numAlumnos];
         float[] calificaciones = new float[numAlumnos];
 
-        // Genera notas random entre 1 y 10
-        for (int i = 0; i < control.length; i++) {
-            control[i] = (int) (Math.random() * 11);
-        }
-
-        // REFACTORIZACIÓN 1: Limpieza de búsqueda de extremos
-        int minNota = Collections.min(Arrays.asList(control));
-        int maxNota = Collections.max(Arrays.asList(control));
-
-        List<Integer> notasList = Arrays.asList(control);
-        int indMinNota = notasList.indexOf(minNota) + 1;
-        int indMaxNota = notasList.indexOf(maxNota) + 1;
-
-        System.out.println("Mínimo es: " + minNota + " | Máximo es: " + maxNota);
-        System.out.println("Índice del mínimo: " + indMinNota + " | Índice del máximo: " + indMaxNota);
-        System.out.println("Array de Notas: " + notasList);
-
-        // Generación de prácticas y calificaciones
+        // REFACTORIZACIÓN 2: Unificación de la generación de datos en un solo bucle
         for (int i = 0; i < numAlumnos; i++) {
+            control[i] = (int) (Math.random() * 11);
             practicas[i] = (int) (Math.random() * 11);
             calificaciones[i] = (control[i] + (float) practicas[i]) / 2;
         }
 
+        // Búsqueda de extremos
+        int minNota = Collections.min(Arrays.asList(control));
+        int maxNota = Collections.max(Arrays.asList(control));
+
+        List<Integer> notasList = Arrays.asList(control);
+        
+        System.out.println("Mínimo: " + minNota + " | Máximo: " + maxNota);
+        System.out.println("Índice Mín: " + (notasList.indexOf(minNota) + 1) + " | Máx: " + (notasList.indexOf(maxNota) + 1));
+        System.out.println("Array de Notas: " + notasList);
         System.out.println("Prácticas      : " + Arrays.toString(practicas));
         System.out.println("Calificaciones : " + Arrays.toString(calificaciones));
 
@@ -52,7 +45,7 @@ public class EjercicioArrays {
         System.out.println("Relación aprobados: " + Arrays.toString(aprobados));
         System.out.println("Relación suspensos: " + Arrays.toString(suspensos));
 
-        // Inserción de nota en posición 4
+        // Inserción de nota final simplificada
         double[] calif = new double[40];
         for (int j = 0; j < 31; j++) {
             calif[j] = (int) (Math.random() * 11);
